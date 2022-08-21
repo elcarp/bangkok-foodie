@@ -5,6 +5,11 @@ admin_path:
 webhook_url: 
 sections:
 - type: directory
+  path: bars
+  label: Bars
+  create: all
+  match: "**/*"
+- type: directory
   path: restaurants
   label: Restaurants
   create: all
