@@ -6,10 +6,6 @@ module.exports = {
   ],
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    fontFamily: {
-      display: ['Mulish'],
-      body: ['Mulish'],
-    },
     screens: {
       sm: '640px',
       // => @media (min-width: 640px) { ... }

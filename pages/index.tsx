@@ -3,7 +3,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import HeroImage from '~public/images/hero-image.jpg'
 
-const Home: NextPage = () => {
+const Home: NextPage = ({restaurantData}: any) => {
+  console.log(restaurantData)
   return (
     <>
       <Head>
@@ -22,7 +23,7 @@ const Home: NextPage = () => {
           objectFit='cover'
         />
         <div className='absolute z-10'>
-          <h1 className='text-6xl font-bold text-white'>
+          <h1 className='text-white'>
             The Bangkok Foodie
           </h1>
           <p className='mt-3 text-2xl text-white'>
@@ -35,3 +36,27 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+
+export async function getStaticProps() {
+  const tableId = `${process.env.NEXT_PUBLIC_AIRTABLE_TABLE_ID}`
+
+  const restaurants = await fetch(
+    `https://api.airtable.com/v0/${process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID}/${tableId}`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        ['Authorization']: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_API_KEY}`,
+      },
+    }
+  )
+  const restaurantData = await restaurants.json()
+
+  return {
+    props: {
+      restaurantData,
+    },
+    revalidate: 1,
+  }
+}
+
