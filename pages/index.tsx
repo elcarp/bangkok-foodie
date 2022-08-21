@@ -26,7 +26,7 @@ const Home: NextPage = ({restaurantData}: any) => {
           <h1 className='text-white'>
             The Bangkok Foodie
           </h1>
-          <p className='mt-3 text-2xl text-white'>
+          <p className='mt-4 text-2xl text-white'>
             An approved directory of where to eat from real insiders.
           </p>
         </div>
