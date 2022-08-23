@@ -19,5 +19,6 @@ description: ''
 address: ''
 main_image: "/uploads/menshotokyobkk-111-3000x1300.jpeg"
 other_images: []
+main_image_credit: BKK Menu Co.  https://www.bkkmenu.com/eat/we-recommend/mensho-tokyo-bkk.html
 
 ---
