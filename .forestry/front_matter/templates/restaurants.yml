@@ -1,0 +1,125 @@
+---
+label: Restaurants
+hide_body: false
+fields:
+- name: name
+  type: text
+  config:
+    required: false
+  label: Name
+- name: cuisine
+  type: text
+  config:
+    required: false
+  label: Cuisine
+- name: cuisine_subtype
+  type: text
+  config:
+    required: false
+  label: Cuisine Subtype
+- name: area
+  type: tag_list
+  default: []
+  label: Area
+- name: best_for
+  type: tag_list
+  default: []
+  label: Best For
+- name: price_range
+  type: select
+  default: []
+  config:
+    required: false
+    options:
+    - "$"
+    - "$$"
+    - "$$$"
+    - "$$$$"
+    - "$$$$$"
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Price Range
+- name: operating_hours
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: Operating Hours
+- name: tags
+  type: tag_list
+  default: []
+  label: Tags
+- name: has_seating
+  type: boolean
+  label: Has Seating
+- name: has_outdoor_seating
+  type: boolean
+  label: Has Outdoor Seating
+- name: description
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: true
+    schema:
+      format: markdown
+  label: Description
+- name: rating
+  type: select
+  default: []
+  config:
+    required: false
+    options:
+    - '1'
+    - '2 '
+    - '3'
+    - " 4"
+    - '5'
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Rating
+- name: address
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: true
+    schema:
+      format: markdown
+  label: Address
+- name: phone
+  type: number
+  label: Phone
+  description: ''
+  default: 0
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
+- name: main_image
+  type: file
+  config:
+    maxSize: 64
+  label: Main Image
+- name: main_image_credit
+  type: text
+  config:
+    required: false
+  label: Main Image Credit
+- name: other_images
+  type: image_gallery
+  config: {}
+  label: Other Images
+pages:
+- restaurants/mensho-tokyo.md
+- restaurants/tooms-kitchen.md
