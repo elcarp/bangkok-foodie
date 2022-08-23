@@ -78,7 +78,12 @@ fields:
   default: []
   config:
     required: false
-    options: []
+    options:
+    - '1'
+    - '2 '
+    - '3'
+    - " 4"
+    - '5'
     source:
       type: simple
       section: 
