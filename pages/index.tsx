@@ -5,8 +5,8 @@ import HeroImage from '~public/images/hero-image.jpg'
 import fs from 'fs'
 import matter from 'gray-matter'
 
-const Home: NextPage = ({ restaurantData }: any) => {
-  console.log(restaurantData)
+const Home: NextPage = ({ restaurantData, restaurantListings }: any) => {
+  console.log(restaurantListings)
   return (
     <>
       <Head>
@@ -26,9 +26,33 @@ const Home: NextPage = ({ restaurantData }: any) => {
         />
         <div className='absolute z-10'>
           <h1 className='text-white'>The Bangkok Foodie</h1>
-          <p className='mt-4 text-2xl text-white'>
-            An approved directory of where to eat from real insiders.
+          <p className='mt-4 text-white'>
+            An approved directory of where to eat from real insiders. <br />
+            Places that are <em> that good</em>... you would only share with
+            really good friends.
           </p>
+        </div>
+      </div>
+      <div className='container mx-auto mt-20'>
+        <div className='grid grid-cols-4 justify-center items-center text-center gap-5'>
+          {restaurantListings.map(({ frontmatter, slug }) => {
+            return (
+              <>
+
+                <div className='shadow-lg rounded-lg p-5'>
+                  <div className='relative h-96'>
+                    <Image
+                      src={frontmatter.main_image}
+                      alt={frontmatter.name}
+                      layout='fill'
+                      objectFit='cover'
+                    />
+                  </div>
+                  {frontmatter.name}
+                </div>
+              </>
+            )
+          })}
         </div>
       </div>
     </>
@@ -68,7 +92,7 @@ export async function getStaticProps() {
   return {
     props: {
       restaurantData,
-      restaurantListings
+      restaurantListings,
     },
     revalidate: 1,
   }
