@@ -106,3 +106,5 @@ fields:
     min: 
     max: 
     step: 
+pages:
+- restaurants/mensho-tokyo.md
