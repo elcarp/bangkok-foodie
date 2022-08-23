@@ -17,5 +17,7 @@ has_seating: true
 has_outdoor_seating: false
 description: ''
 address: ''
+main_image: "/uploads/menshotokyobkk-111-3000x1300.jpeg"
+other_images: []
 
 ---
