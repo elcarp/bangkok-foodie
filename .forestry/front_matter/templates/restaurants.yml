@@ -17,22 +17,14 @@ fields:
   config:
     required: false
   label: Cuisine Subtype
+- name: area
+  type: tag_list
+  default: []
+  label: Area
 - name: best_for
   type: tag_list
   default: []
   label: Best For
-- name: area
-  type: select
-  default: []
-  config:
-    required: false
-    options: []
-    source:
-      type: simple
-      section: 
-      file: 
-      path: 
-  label: Area
 - name: price_range
   type: select
   default: []
