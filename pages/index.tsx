@@ -2,8 +2,10 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import HeroImage from '~public/images/hero-image.jpg'
+import fs from 'fs'
+import matter from 'gray-matter'
 
-const Home: NextPage = ({restaurantData}: any) => {
+const Home: NextPage = ({ restaurantData }: any) => {
   console.log(restaurantData)
   return (
     <>
@@ -15,7 +17,7 @@ const Home: NextPage = ({restaurantData}: any) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <div className='flex w-full items-center justify-center text-center relative h-screen-1/2 shadow-lg'>
-        <div className='overlay w-full h-screen-1/2 bg-gray-800 opacity-50 absolute z-10 border-10 border-red-500'/>
+        <div className='overlay w-full h-screen-1/2 bg-gray-800 opacity-50 absolute z-10 border-10 border-red-500' />
         <Image
           src={HeroImage}
           alt='Thai food'
@@ -23,9 +25,7 @@ const Home: NextPage = ({restaurantData}: any) => {
           objectFit='cover'
         />
         <div className='absolute z-10'>
-          <h1 className='text-white'>
-            The Bangkok Foodie
-          </h1>
+          <h1 className='text-white'>The Bangkok Foodie</h1>
           <p className='mt-4 text-2xl text-white'>
             An approved directory of where to eat from real insiders.
           </p>
@@ -36,7 +36,6 @@ const Home: NextPage = ({restaurantData}: any) => {
 }
 
 export default Home
-
 
 export async function getStaticProps() {
   const tableId = `${process.env.NEXT_PUBLIC_AIRTABLE_TABLE_ID}`
@@ -52,11 +51,25 @@ export async function getStaticProps() {
   )
   const restaurantData = await restaurants.json()
 
+  const files = fs
+    .readdirSync(`restaurants`)
+    .filter((file) => file.includes('.md'))
+  const restaurantListings = files.map((fileName) => {
+    const slug = fileName.replace('.md', '')
+    const readFile = fs.readFileSync(`restaurants/${fileName}`, 'utf-8')
+    const { data: frontmatter } = matter(readFile)
+
+    return {
+      slug,
+      frontmatter,
+    }
+  })
+
   return {
     props: {
       restaurantData,
+      restaurantListings
     },
     revalidate: 1,
   }
 }
-
