@@ -1,16 +1,19 @@
 import { FunctionComponent } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 type Props = {
-  restaurants: [{
-    frontmatter: {
-      address: string
-      area: any
-      best_for: any
-      cuisine: string
+  restaurants: [
+    {
+      frontmatter: {
+        address: string
+        area: any
+        best_for: any
+        cuisine: string
+      }
+      slug: string
     }
-    slug: string
-  }]
+  ]
 }
 
 const ProductList: FunctionComponent<Props> = ({ restaurants }) => {
@@ -21,17 +24,19 @@ const ProductList: FunctionComponent<Props> = ({ restaurants }) => {
         {restaurants.map(({ frontmatter, slug }: any) => {
           return (
             <>
-              <div className='shadow-lg rounded-lg p-5'>
-                <div className='relative h-48 rounded'>
-                  <Image
-                    src={frontmatter.main_image}
-                    alt={frontmatter.name}
-                    layout='fill'
-                    objectFit='cover'
-                  />
+              <Link href={`/restaurants/${slug}`}>
+                <div className='shadow-lg rounded-lg p-5'>
+                  <div className='relative h-48 rounded'>
+                    <Image
+                      src={frontmatter.main_image}
+                      alt={frontmatter.name}
+                      layout='fill'
+                      objectFit='cover'
+                    />
+                  </div>
+                  <span className='mt-3 block'>{frontmatter.name}</span>
                 </div>
-                <span className='mt-3 block'>{frontmatter.name}</span>
-              </div>
+              </Link>
             </>
           )
         })}
