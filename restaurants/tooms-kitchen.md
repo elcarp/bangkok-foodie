@@ -16,7 +16,8 @@ has_seating: true
 has_outdoor_seating: true
 description: ''
 address: ''
-main_image: "/uploads/screenshot-2022-08-23-at-9-01-54-am.png"
+main_image: https://bangkokfoodie.s3.us-west-1.amazonaws.com/uploads/Screenshot 2022-11-01
+  at 10.02.21 AM.png
 main_image_credit: ''
 other_images: []
 

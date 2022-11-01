@@ -17,8 +17,8 @@ has_seating: true
 has_outdoor_seating: false
 description: ''
 address: ''
-main_image: "/uploads/menshotokyobkk-111-3000x1300.jpeg"
+main_image: https://bangkokfoodie.s3.us-west-1.amazonaws.com/uploads/Mensho-Tokyo.jpeg
 other_images: []
-main_image_credit: BKK Menu Co.  https://www.bkkmenu.com/eat/we-recommend/mensho-tokyo-bkk.html
+main_image_credit: https://www.theweek.in/leisure/lifestyle/2022/03/03/mensho-tokyo-a-goody-little-ramen-bar-for-novices-and-seasoned-noodleheads.html
 
 ---
