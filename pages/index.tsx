@@ -35,10 +35,9 @@ const Home: NextPage = ({ restaurantData, restaurantListings }: any) => {
       </div>
       <div className='container mx-auto mt-20'>
         <div className='grid grid-cols-4 justify-center items-center text-center gap-5'>
-          {restaurantListings.map(({ frontmatter, slug }) => {
+          {restaurantListings.map(({ frontmatter, slug }: any) => {
             return (
               <>
-
                 <div className='shadow-lg rounded-lg p-5'>
                   <div className='relative h-96'>
                     <Image
