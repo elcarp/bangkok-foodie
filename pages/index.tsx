@@ -5,8 +5,7 @@ import HeroImage from '~public/images/hero-image.jpg'
 import fs from 'fs'
 import matter from 'gray-matter'
 
-const Home: NextPage = ({ restaurantData, restaurantListings }: any) => {
-  console.log(restaurantListings)
+const Home: NextPage = ({ restaurantListings }: any) => {
   return (
     <>
       <Head>
@@ -29,7 +28,7 @@ const Home: NextPage = ({ restaurantData, restaurantListings }: any) => {
           <p className='mt-4 text-white'>
             An approved directory of where to eat from real insiders. <br />
             Places that are <em> that good</em>... you would only share with
-            really good friends.
+            people you like.
           </p>
         </div>
       </div>
@@ -39,7 +38,7 @@ const Home: NextPage = ({ restaurantData, restaurantListings }: any) => {
             return (
               <>
                 <div className='shadow-lg rounded-lg p-5'>
-                  <div className='relative h-96'>
+                  <div className='relative h-48 rounded'>
                     <Image
                       src={frontmatter.main_image}
                       alt={frontmatter.name}
@@ -47,7 +46,7 @@ const Home: NextPage = ({ restaurantData, restaurantListings }: any) => {
                       objectFit='cover'
                     />
                   </div>
-                  {frontmatter.name}
+                  <span className='mt-3 block'>{frontmatter.name}</span>
                 </div>
               </>
             )
@@ -63,16 +62,16 @@ export default Home
 export async function getStaticProps() {
   const tableId = `${process.env.NEXT_PUBLIC_AIRTABLE_TABLE_ID}`
 
-  const restaurants = await fetch(
-    `https://api.airtable.com/v0/${process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID}/${tableId}`,
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        ['Authorization']: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_API_KEY}`,
-      },
-    }
-  )
-  const restaurantData = await restaurants.json()
+  // const restaurants = await fetch(
+  //   `https://api.airtable.com/v0/${process.env.NEXT_PUBLIC_AIRTABLE_BASE_ID}/${tableId}`,
+  //   {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       ['Authorization']: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_API_KEY}`,
+  //     },
+  //   }
+  // )
+  // const restaurantData = await restaurants.json()
 
   const files = fs
     .readdirSync(`restaurants`)
@@ -90,7 +89,6 @@ export async function getStaticProps() {
 
   return {
     props: {
-      restaurantData,
       restaurantListings,
     },
     revalidate: 1,
