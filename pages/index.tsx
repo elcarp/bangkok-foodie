@@ -28,7 +28,7 @@ const Home: NextPage = ({ restaurantListings }: any) => {
           <h1 className='text-white'>The Bangkok Foodie</h1>
           <p className='mt-4 text-white'>
             An approved directory of where to eat from real insiders. <br />
-            Places that are <em> so good</em>, you would only share with people
+            Places <em> so good</em>, you would only share with people
             you like.
           </p>
         </div>
