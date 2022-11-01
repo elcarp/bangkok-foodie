@@ -4,6 +4,7 @@ import Image from 'next/image'
 import HeroImage from '~public/images/hero-image.jpg'
 import fs from 'fs'
 import matter from 'gray-matter'
+import ProductList from '~components/product_list'
 
 const Home: NextPage = ({ restaurantListings }: any) => {
   return (
@@ -27,32 +28,12 @@ const Home: NextPage = ({ restaurantListings }: any) => {
           <h1 className='text-white'>The Bangkok Foodie</h1>
           <p className='mt-4 text-white'>
             An approved directory of where to eat from real insiders. <br />
-            Places that are <em> so good</em>, you would only share with
-            people you like.
+            Places that are <em> so good</em>, you would only share with people
+            you like.
           </p>
         </div>
       </div>
-      <div className='container mx-auto mt-20'>
-        <div className='grid grid-cols-4 justify-center items-center text-center gap-5'>
-          {restaurantListings.map(({ frontmatter, slug }: any) => {
-            return (
-              <>
-                <div className='shadow-lg rounded-lg p-5'>
-                  <div className='relative h-48 rounded'>
-                    <Image
-                      src={frontmatter.main_image}
-                      alt={frontmatter.name}
-                      layout='fill'
-                      objectFit='cover'
-                    />
-                  </div>
-                  <span className='mt-3 block'>{frontmatter.name}</span>
-                </div>
-              </>
-            )
-          })}
-        </div>
-      </div>
+      <ProductList restaurants={restaurantListings} />
     </>
   )
 }
