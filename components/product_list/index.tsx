@@ -25,7 +25,7 @@ const ProductList: FunctionComponent<Props> = ({ restaurants }) => {
           return (
             <>
               <Link href={`/restaurants/${slug}`}>
-                <div className='shadow-lg rounded-lg p-5'>
+                <div className='shadow-lg rounded-lg p-5 cursor-pointer'>
                   <div className='relative h-48 rounded'>
                     <Image
                       src={frontmatter.main_image}
